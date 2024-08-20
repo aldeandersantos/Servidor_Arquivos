@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listagem de Arquivos</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Arquivos Disponíveis para Download</h1>
+
+    {% if arquivos %}
+        <h2>Arquivos Disponíveis</h2>
+        <ul>
+            {% for arquivo in arquivos %}
+                <li>
+                    <!-- Link para download do arquivo -->
+                    <a href="{% url 'baixar_arquivo' arquivo.id %}">{{ arquivo.nome }}</a>
+                    <!-- Formulário para exclusão de arquivos -->
+                    <form action="{% url 'excluir_arquivo' arquivo.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este arquivo?');">Excluir</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não há arquivos disponíveis.</p>
+    {% endif %}
+
+    <!-- Formulário para upload de arquivos, exibido sempre -->
+    <h2>Upload de Arquivo</h2>
+    <form action="{% url 'upload_arquivo' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

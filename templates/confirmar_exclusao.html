@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h1>Confirmar Exclusão</h1>
+    <p>Tem certeza de que deseja excluir o arquivo "{{ arquivo.nome }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Excluir</button>
+        <a href="{% url 'listar_arquivos' %}">Cancelar</a>
+    </form>
+</body>
+</html>

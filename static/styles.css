@@ -1,0 +1,82 @@
+/* styles.css */
+
+/* Reset básico para remover margens e preenchimentos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo do documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Cabeçalho principal */
+h1, h2 {
+    color: #e1e1e1;
+}
+
+/* Lista de arquivos */
+ul {
+    list-style: none;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+/* Links */
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Formulário */
+form {
+    margin-top: 20px;
+}
+
+form button {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #f1f1f1;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #555;
+    border-color: #777;
+}
+
+/* Campo de entrada */
+input[type="text"], input[type="file"], button {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus, input[type="file"]:focus {
+    outline: none;
+    border-color: #1e90ff;
+}
+
+/* Mensagem de erro ou aviso */
+p {
+    margin-top: 10px;
+    color: #ff6f6f;
+}
