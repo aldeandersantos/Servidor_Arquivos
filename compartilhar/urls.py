@@ -1,11 +1,18 @@
-from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from . import views
+from django.urls import path, include
+from .views import ArquivoViewSet, listar_arquivos, baixar_arquivo, upload_arquivo, excluir_arquivo
+from rest_framework.routers import DefaultRouter
+
+# Configurar o router para as rotas da API REST
+router = DefaultRouter()
+router.register(r'arquivos', ArquivoViewSet)
 
 urlpatterns = [
-    path('', views.listar_arquivos, name='listar_arquivos'),
-    path('baixar/<int:arquivo_id>/', views.baixar_arquivo, name='baixar_arquivo'),
-    path('upload/', views.upload_arquivo, name='upload_arquivo'),
-    path('excluir/<int:arquivo_id>/', views.excluir_arquivo, name='excluir_arquivo'),
+    # URLs para o site
+    path('', listar_arquivos, name='listar_arquivos'),
+    path('baixar/<int:arquivo_id>/', baixar_arquivo, name='baixar_arquivo'),
+    path('upload/', upload_arquivo, name='upload_arquivo'),
+    path('excluir/<int:arquivo_id>/', excluir_arquivo, name='excluir_arquivo'),
+
+    # URLs para a API REST
+    path('api/', include(router.urls)),
 ]
